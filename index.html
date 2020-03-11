@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Color Grading</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="./lib/normalize.css"/> 
+    <link rel="stylesheet" href="./lib/monolith.min.css"/> 
+		<link type="text/css" rel="stylesheet" href="main.css">
+    <script src="./lib/jquery.js"></script>
+    <script src="./lib/pickr.min.js"></script>
+	</head>
+	<body>
+
+		<div id="image-container">
+      <div id="image-canvas"></div>
+    </div>
+
+    <div id="controls-container">
+
+      <div class="tool-container" id="explanation">
+        <div class="container-heading main-heading">Stretch Color Grading</div>
+<!--         <div class="text">
+          <p class="text-unimportant">This little demonstrator lets you adjust colors of an image by placing several anchors. Each anchor has an original color (the pixel color at the anchors position). This color might be set to any other color. The stretch color grading will transform those colors exactly and all other colors accordingly.</p>
+          <p>Drag and drop your own image to play around.</p>
+          <p>Click on the image to add an anchor.</p>
+        </div>
+ -->      </div>
+
+      <div class="tool-container" id="pointcloud-container">
+        <div class="container-heading">Points Cloud</div>
+        <div id="pointcloud-canvas"></div>
+      </div>
+
+      <div class="tool-container" id="anchorsettings-container">
+        <div class="container-heading">
+          <div class="container-title">Selected Anchor</div>
+          <div class="icon remove-anchor"></div>
+        </div>
+        
+        <div class="control-element">
+          <div class="label">Original color:</div>
+          <button id="from-color"></button>
+          <div class="icon arrow-down"></div>
+        </div>
+        <div class="control-element">
+          <div class="label">New color:</div>
+          <button id="to-color"></button>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="StretchTransform.js"></script>
+    <script src="main.js" type="module"></script>
+
+	</body>
+</html>
