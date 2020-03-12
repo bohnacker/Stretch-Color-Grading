@@ -6,51 +6,59 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
     <link rel="stylesheet" href="./lib/normalize.css"/> 
     <link rel="stylesheet" href="./lib/monolith.min.css"/> 
-		<link type="text/css" rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./lib/introjs.css">
+    <link rel="stylesheet" href="main.css">
     <script src="./lib/jquery.js"></script>
     <script src="./lib/pickr.min.js"></script>
 	</head>
 	<body>
 
 		<div id="image-container">
-      <div id="image-canvas"></div>
+      <div id="image-canvas" data-step="1" data-intro="Click to add anchors. Try it now. <br>At first, not much might happen. But don't worry." data-position='right'></div>
     </div>
 
     <div id="controls-container">
 
-      <div class="tool-container" id="explanation">
-        <div class="container-heading main-heading">Stretch Color Grading</div>
-<!--         <div class="text">
-          <p class="text-unimportant">This little demonstrator lets you adjust colors of an image by placing several anchors. Each anchor has an original color (the pixel color at the anchors position). This color might be set to any other color. The stretch color grading will transform those colors exactly and all other colors accordingly.</p>
-          <p>Drag and drop your own image to play around.</p>
-          <p>Click on the image to add an anchor.</p>
+      <div class="tool">
+        <div class="tool-container" id="explanation">
+          <div class="container-heading main-heading text">Stretch Color Grading</div>
+           <div class="text">
+            <button id="quick-start" class="text">Quick start</button>
+          </div>
         </div>
- -->      </div>
-
-      <div class="tool-container" id="pointcloud-container">
-        <div class="container-heading">Points Cloud</div>
-        <div id="pointcloud-canvas"></div>
+      </div>
+      
+      <div class="tool">
+        <div class="tool-container" id="pointcloud-container" data-step="5" data-intro="The pixel cloud displays the pixels of the image in a RGB cube. <br>Click and drag to rotate. Use mouse wheel to zoom." data-position='left'>
+          <div class="container-heading text">Pixel Cloud</div>
+          <div id="pointcloud-canvas"></div>
+        </div>
       </div>
 
-      <div class="tool-container" id="anchorsettings-container">
-        <div class="container-heading">
-          <div class="container-title">Selected Anchor</div>
-          <div class="icon remove-anchor"></div>
+      <div class="tool">
+        <div class="tool-container" id="anchorsettings-container" data-step="2" data-intro="Use the color chooser to adjust the target color. In the image, the original color will be replaced by the target color. All other colors will be changed accordingly." data-position='left'>
+          <div class="container-heading">
+            <div class="container-title text">Selected Anchor</div>
+            <div class="icon remove-anchor" data-step="4" data-intro="Use this to remove the selected anchor." data-position='left'></div>
+          </div>
+          
+          <div class="control-element">
+            <div class="label text">Original color:</div>
+            <button id="from-color"></button>
+            <div class="icon arrow-down" data-step="3" data-intro="Reset target color with original color." data-position='left'></div>
+          </div>
+          <div class="control-element">
+            <div class="label text">Target color:</div>
+            <button id="to-color"></button>
+          </div>
+
         </div>
-        
-        <div class="control-element">
-          <div class="label">Original color:</div>
-          <button id="from-color"></button>
-          <div class="icon arrow-down"></div>
-        </div>
-        <div class="control-element">
-          <div class="label">New color:</div>
-          <button id="to-color"></button>
-        </div>
+        <div id="anchorsettings-inactive"></div>
       </div>
 
     </div>
 
+    <script type="text/javascript" src="./lib/intro.js"></script>
     <script src="StretchTransform.js"></script>
     <script src="main.js" type="module"></script>
 

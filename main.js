@@ -40,11 +40,10 @@ var resizeId;
 console.log('THREE:')
 console.log(THREE);
 
-$('#anchorsettings-container').hide();
+// $('#anchorsettings-container').hide();
 
 initTransform();
 initGradingScene();
-
 
 
 function initUI() {
@@ -59,6 +58,10 @@ function initUI() {
 
   $('.remove-anchor').click(removeSelectedAnchor);
   $('.arrow-down').click(resetAnchorColor);
+
+  $('#quick-start').click(function() {
+    introJs().start();
+  });
 
 
   pickr = Pickr.create({
@@ -119,6 +122,14 @@ function initUI() {
     clearTimeout(resizeId);
     resizeId = setTimeout(adjustSizes, 250);
   });
+
+  console.log($('#anchorsettings-inactive'))
+  var bbTool = $('#anchorsettings-inactive').parent()[0].getBoundingClientRect();
+  $('#anchorsettings-inactive').css('width', bbTool.width);
+  $('#anchorsettings-inactive').css('height', bbTool.height-2);
+  $('#anchorsettings-inactive').click(function() {
+    // block events
+  });  
 
 }
 
@@ -185,6 +196,7 @@ function addAnchor(x, y, open) {
   // if (x >= img.width || y >= img.height) return false;
 
   let bbCanvas = $(renderer.domElement)[0].getBoundingClientRect();
+  console.log(bbCanvas);
 
   let elemX = x;
   let elemY = y;
@@ -222,7 +234,8 @@ function addAnchor(x, y, open) {
     } else {
       actAnchor.anchorDOMElement.removeClass('selected');
       actAnchor = null;
-      $('#anchorsettings-container').hide();
+      // $('#anchorsettings-container').hide();
+      $('#anchorsettings-inactive').show();
       // pickr.hide();
     }
   });
@@ -247,7 +260,8 @@ function removeAllAnchors() {
   }
 
   anchors = [];
-  $('#anchorsettings-container').hide();
+  // $('#anchorsettings-container').hide();
+  $('#anchorsettings-inactive').show();
 
   updateGradingPass();
 
@@ -275,7 +289,8 @@ function removeSelectedAnchor() {
     }
 
     actAnchor = null;
-    $('#anchorsettings-container').hide();
+    // $('#anchorsettings-container').hide();
+    $('#anchorsettings-inactive').show();
 
     console.log(anchors);
 
@@ -300,7 +315,8 @@ function selectAnchor(idx) {
   let destColString = 'rgb(' + dest.map(x => x * 255).join(',') + ')';
   $('#to-color').css('background', destColString);
 
-  $('#anchorsettings-container').show();
+  // $('#anchorsettings-container').show();
+  $('#anchorsettings-inactive').hide();
 
   pickr.hide();
   pickr.show();
@@ -321,7 +337,8 @@ function initTransform() {
 
   $('.anchor').remove();
 
-  $('#anchorsettings-container').hide();
+  // $('#anchorsettings-container').hide();
+  // $('#anchorsettings-inactive').show();
 
   // console.log('myTransform:')
   // console.log(myTransform)
