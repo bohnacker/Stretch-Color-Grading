@@ -1,11 +1,11 @@
-import * as THREE from '../lib/three/three.module.js';
+import * as THREE from './lib/three/three.module.js';
 
-import { OrbitControls } from '../lib/three/jsm/controls/OrbitControls.js';
+import { OrbitControls } from './lib/three/jsm/controls/OrbitControls.js';
 
-import { EffectComposer } from '../lib/three/jsm/postprocessing/EffectComposer.js';
-import { ShaderPass } from '../lib/three/jsm/postprocessing/ShaderPass.js';
-import { TexturePass } from '../lib/three/jsm/postprocessing/TexturePass.js'
-import { GradingShader } from './GradingShader.js';
+import { EffectComposer } from './lib/three/jsm/postprocessing/EffectComposer.js';
+import { ShaderPass } from './lib/three/jsm/postprocessing/ShaderPass.js';
+import { TexturePass } from './lib/three/jsm/postprocessing/TexturePass.js'
+import { GradingShader } from './lib/GradingShader.js';
 
 var myTransform;
 var anchors = [];
@@ -366,7 +366,7 @@ function initGradingScene() {
   texturePass = new TexturePass();
   composer.addPass(texturePass);
 
-  loadTexture("../assets/gradient.png", applyTextureMap);
+  loadTexture("./assets/gradient.png", applyTextureMap);
 
   gradingPass = new ShaderPass(GradingShader);
   gradingPass.uniforms['anchorCount'].value = 0;
