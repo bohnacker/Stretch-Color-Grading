@@ -4,17 +4,18 @@
 		<title>Color Grading</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <link rel="stylesheet" href="./lib/normalize.css"/> 
-    <link rel="stylesheet" href="./lib/monolith.min.css"/> 
-    <link rel="stylesheet" href="./lib/introjs.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./style/normalize.css"/> 
+    <link rel="stylesheet" href="./lib/pickr/monolith.min.css"/> 
+    <link rel="stylesheet" href="./lib/introjs/introjs.css">
+    <link rel="stylesheet" href="./lib/introjs/introjs-modern.css">
+    <link rel="stylesheet" href="./style/main.css">
     <script src="./lib/jquery.js"></script>
-    <script src="./lib/pickr.min.js"></script>
+    <script src="./lib/pickr/pickr.min.js"></script>
 	</head>
 	<body>
 
 		<div id="image-container">
-      <div id="image-canvas" data-step="1" data-intro="Click to add anchors. Try it now. <br>At first, not much might happen. But don't worry." data-position='right'></div>
+      <div id="image-canvas" data-step="1" data-intro="Click to add anchors. Try it now. <br>At first, not much might happen. But don't worry.<br><br>You can also drag your own image on this App to play around with it." data-position='right'></div>
     </div>
 
     <div id="controls-container">
@@ -22,8 +23,9 @@
       <div class="tool">
         <div class="tool-container" id="explanation">
           <div class="container-heading main-heading text">Stretch Color Grading</div>
-           <div class="text">
-            <button id="quick-start" class="text">Quick start</button>
+          <p class="text">by Hartmut Bohnacker</p>
+          <div class="text">
+           <button id="quick-start" class="text">Quick start</button>
           </div>
         </div>
       </div>
@@ -58,9 +60,9 @@
 
     </div>
 
-    <script type="text/javascript" src="./lib/intro.js"></script>
-    <script src="StretchTransform.js"></script>
-    <script src="main.js" type="module"></script>
+    <script type="text/javascript" src="./lib/introjs/intro.js"></script>
+    <script src="./lib/StretchTransform.js"></script>
+    <script src="./js/main.js" type="module"></script>
 
 	</body>
 </html>

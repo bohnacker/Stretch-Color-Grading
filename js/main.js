@@ -1,10 +1,10 @@
-import * as THREE from './lib/three.module.js';
+import * as THREE from '../lib/three/three.module.js';
 
-import { OrbitControls } from './lib/jsm/controls/OrbitControls.js';
+import { OrbitControls } from '../lib/three/jsm/controls/OrbitControls.js';
 
-import { EffectComposer } from './lib/jsm/postprocessing/EffectComposer.js';
-import { ShaderPass } from './lib/jsm/postprocessing/ShaderPass.js';
-import { TexturePass } from './lib/jsm/postprocessing/TexturePass.js'
+import { EffectComposer } from '../lib/three/jsm/postprocessing/EffectComposer.js';
+import { ShaderPass } from '../lib/three/jsm/postprocessing/ShaderPass.js';
+import { TexturePass } from '../lib/three/jsm/postprocessing/TexturePass.js'
 import { GradingShader } from './GradingShader.js';
 
 var myTransform;
@@ -37,8 +37,8 @@ var allInitialized = false;
 var resizeId;
 
 
-console.log('THREE:')
-console.log(THREE);
+// console.log('THREE:')
+// console.log(THREE);
 
 // $('#anchorsettings-container').hide();
 
@@ -59,9 +59,12 @@ function initUI() {
   $('.remove-anchor').click(removeSelectedAnchor);
   $('.arrow-down').click(resetAnchorColor);
 
+  introJs().setOption("nextLabel", " > ");
   $('#quick-start').click(function() {
     introJs().start();
   });
+
+
 
 
   pickr = Pickr.create({
@@ -123,7 +126,7 @@ function initUI() {
     resizeId = setTimeout(adjustSizes, 250);
   });
 
-  console.log($('#anchorsettings-inactive'))
+  // console.log($('#anchorsettings-inactive'))
   var bbTool = $('#anchorsettings-inactive').parent()[0].getBoundingClientRect();
   $('#anchorsettings-inactive').css('width', bbTool.width);
   $('#anchorsettings-inactive').css('height', bbTool.height-2);
@@ -196,7 +199,7 @@ function addAnchor(x, y, open) {
   // if (x >= img.width || y >= img.height) return false;
 
   let bbCanvas = $(renderer.domElement)[0].getBoundingClientRect();
-  console.log(bbCanvas);
+  // console.log(bbCanvas);
 
   let elemX = x;
   let elemY = y;
@@ -265,13 +268,13 @@ function removeAllAnchors() {
 
   updateGradingPass();
 
-  console.log(myTransform)
+  // console.log(myTransform)
 }
 
 
 function removeSelectedAnchor() {
-  console.log('remove Anchor');
-  console.log(actAnchor);
+  // console.log('remove Anchor');
+  // console.log(actAnchor);
 
   if (actAnchor) {
     // remove dom element
@@ -292,7 +295,7 @@ function removeSelectedAnchor() {
     // $('#anchorsettings-container').hide();
     $('#anchorsettings-inactive').show();
 
-    console.log(anchors);
+    // console.log(anchors);
 
     myTransform.updateAnchorMatrices();
     updateGradingPass();
@@ -363,7 +366,7 @@ function initGradingScene() {
   texturePass = new TexturePass();
   composer.addPass(texturePass);
 
-  loadTexture("./data/gradient.png", applyTextureMap);
+  loadTexture("../assets/gradient.png", applyTextureMap);
 
   gradingPass = new ShaderPass(GradingShader);
   gradingPass.uniforms['anchorCount'].value = 0;
@@ -381,7 +384,7 @@ function initGradingScene() {
 
 function loadTexture(filepath) {
   var textureLoader = new THREE.TextureLoader();
-  console.log('trying to load ' + filepath);
+  // console.log('trying to load ' + filepath);
   textureLoader.load(filepath, applyTextureMap);
 
 }
@@ -618,15 +621,15 @@ function dropHandler(ev) {
       // If dropped items aren't files, reject them
       if (ev.dataTransfer.items[i].kind === 'file') {
         file = ev.dataTransfer.items[i].getAsFile();
-        console.log('1. ... file[' + i + '].name = ' + file.name);
-        console.log(file);
+        // console.log('1. ... file[' + i + '].name = ' + file.name);
+        // console.log(file);
       }
     }
   } else {
     // Use DataTransfer interface to access the file(s)
     for (var i = 0; i < ev.dataTransfer.files.length; i++) {
-      console.log('2. ... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
-      console.log(ev.dataTransfer.files[i]);
+      // console.log('2. ... file[' + i + '].name = ' + ev.dataTransfer.files[i].name);
+      // console.log(ev.dataTransfer.files[i]);
       file = ev.dataTransfer.files[0];
     }
   }
